@@ -1,5 +1,5 @@
 'use strict';
-
+let peopleAdjustable = people
 function searchByName(){
     // Grabbing the values from our nameForm form and inputs.
     let firstNameInput = document.forms['nameForm']['fname'].value;
@@ -22,9 +22,9 @@ function searchByName(){
 }
 
 
-function buildTheGrid(people){
+function buildTheGrid(peopleAdjustable){
     let output = '';
-    let test = people.map(function(el){
+    let test = peopleAdjustable.map(function(el){
        return output +=
         `<tr>
         <td>${el.id}</td>
@@ -43,10 +43,55 @@ function buildTheGrid(people){
 })
 document.getElementById("test").innerHTML = output
 }
-buildTheGrid(people)
 
-function sortByGender(){
-    let genderChoice = document.forms["genderForm"]["gender"]
+// function buildTheNextMenu(){
+//     let eyeColor = `<label for="eyeColor">Choose an Eye Color:</label>
+//                    <input type="text:" id="eyeColor" name="eyeColor" value="">`
+    
+//                    document.getElementById("eyeColorForm").innerHTML=eyeColor
+// }
+
+
+function getPeopleByGender(){
+        let genderChoice = document.forms["genderForm"]["gender"].value
+    let peopleByGender = people.filter(function(el){
+        if ( genderChoice == el.gender){
+            return true;
+            
+        }
+        else{
+            return false;
+        } 
+        
+
+    })
+buildTheGrid(peopleByGender)
+
+peopleAdjustable = peopleByGender
+
+
+}
+
+function getPeopleByEyeColor(){
+    let peopleByEyeColor = []
+    let eyeChoice = document.forms["eyeForm"]["colorEye"].value
+    if (eyeChoice === "brown"||"black"||"hazel"||"blue"||"green" ){
+         peopleByEyeColor = peopleAdjustable.filter(function(el){
+            if (eyeChoice == el.eyeColor){
+                return true;
+            }else{
+                return false;
+            }
+            
+        })
+    }else{
+        prompt(`${eyeChoice} Is not a Vaild Choice Trying Again`)
+    }
+
+    //peopleAdjustable = peopleByEyeColor
+buildTheGrid(peopleByEyeColor)    
+
+
 }
 
 
@@ -54,3 +99,6 @@ function sortByGender(){
 
 
 
+
+
+buildTheGrid(people)
