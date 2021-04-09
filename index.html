@@ -15,25 +15,36 @@
     </form>
 
     <form id ="genderForm">
-      <label for="gender">Choose a Gender:</label>
+      <label for="gender">Select a Gender:</label>
       <select name="gender" id="gender"><br>
         <!-- <option value=" "></option> -->
         <option value="male">Male</option><br>
         <option value="female">Female</option>
         <input type="button" onclick="getPeopleByGender()" vaule ="Submit"> 
       </select>
-    
-    <br>
     </form>
-  
-
-    
     <form id ="eyeForm">
       <label for="eyeColor">Choose an Eye Color:</label>
       <input type="text" id="colorEye" name="colorEye">
       <input type="button" onclick="getPeopleByEyeColor()" value="Submit">
-
     </form>
+
+    <form id ="heightAndWeight">
+      <label for="height">Select a Height Range</label>
+      <select name="height" id="height">
+        <option value="58-63"> 58-63</option>
+        <option value="64-69">54-69</option>
+        <option vaule=">70">Greater than 70</option>
+      </select>
+      <label for="weight">Select a Weight Range</label>
+      <select name="weight" id="weight">
+        <option value="100-150">100-150</option>
+        <option value="151-200">151-200</option>
+        <option value=">200">Greater than 200</option>
+      </select>
+      <input type="button" onclick="getPeopleByGender()" vaule ="Submit"> 
+    </form> 
+ 
 
 
 

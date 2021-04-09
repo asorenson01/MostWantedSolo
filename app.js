@@ -94,6 +94,10 @@ buildTheGrid(peopleByEyeColor)
 
 }
 
+function getPeopleByHeightandWeight{
+    
+}
+
 
 
 
