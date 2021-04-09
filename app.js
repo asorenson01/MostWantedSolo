@@ -20,3 +20,10 @@ function searchByName(){
         console.log('Sorry, looks like there is no one with that name.');
     }
 }
+
+function buildTheGrid()
+  
+
+
+buildTheGrid()
+
