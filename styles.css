@@ -1,0 +1,12 @@
+table{
+    table-layout: auto;
+    
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: left;
+}
