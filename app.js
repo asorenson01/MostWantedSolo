@@ -66,7 +66,7 @@ function getPeopleByGender(){
             
         }
         else{
-            return false;
+        
         } 
         
 
@@ -90,8 +90,8 @@ function getPeopleByEyeColor(){
             }
             
         })
-    }else{
-        prompt(`${eyeChoice} Is not a Vaild Choice Trying Again`)
+    }else {
+        invalidEntry("That is Not a Valid Eye Color Try again", "invalityEntry3")
     }
 
 peopleAdjustable = peopleByEyeColor
@@ -147,11 +147,23 @@ function resetThePage(){
     buildTheGrid(peopleAdjustable)
 }
 
+function invalidEntry(string,string1 ){
+    let x = string
+    let y = string1
+   
+document.getElementById(y).innerHTML = x;
+return x;
+
+}
 
 
 
+
+
+document
 
 
 
 
 buildTheGrid(people)
+
