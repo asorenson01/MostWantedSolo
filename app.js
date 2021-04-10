@@ -35,7 +35,7 @@ function buildTheGrid(peopleAdjustable){
        return output +=
         `<tr>
         <td>${el.id}</td>
-        <td>${el.firstName}</td>
+        <td id ="firstName">${el.firstName}</td>
         <td>${el.lastName}</td>
         <td>${el.gender}</td>
         <td>${el.dob}</td>
@@ -179,16 +179,17 @@ function readyToFindRelatives(){
       <tbody id ="secondTable">
       </tbody>`
         
-        
-        document.getElementById("familyTable").innerHTML = "Family Data"
+    let fName = document.getElementById("firstName").textContent
+        document.getElementById("familyTable").innerHTML = `${fName} Spouses info`
         document.getElementById("secondTableHeader").innerHTML = output
     }
+    findTheRelatives()
 }
 
 function buildTheFamilyGrid(peopleAdjustable){
-    let output = '';
+    let output1 = '';
     let test = peopleAdjustable.map(function(el){
-       return output +=
+       return output1 +=
         `<tr>
         <td>${el.id}</td>
         <td>${el.firstName}</td>
@@ -204,21 +205,24 @@ function buildTheFamilyGrid(peopleAdjustable){
         </tr>`  
 
 })
-document.getElementById("secondTable").innerHTML = output
+document.getElementById("secondTable").innerHTML = output1
 }
 
 function findTheRelatives (){
     
-    let x = peopleAdjustable[1].id
-    let familyTree = peopleAdjustable.filter(function(el){
-        if ( x = el.currentSpouse){
+    let x = peopleAdjustable[0].currentSpouse
+    let familyTree = people.filter(function(el){
+        if ( x == el.id){
             return true;
         }else{
             return false;
         }
     })
-    buildTheFamilyGrid(familyTree)
+ buildTheFamilyGrid(familyTree)
+    
 }
+
+
 
 
 
