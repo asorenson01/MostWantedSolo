@@ -158,10 +158,9 @@ return x;
 
 function readyToFindRelatives(){
     if (peopleAdjustable.length > 1){
-        console.log("List is to big")
+        
     }else{
-        console.log("One Person left")
-        let output;
+       let output;
         output = 
         `<thead>
         <th>ID</th>
@@ -182,8 +181,9 @@ function readyToFindRelatives(){
     let fName = document.getElementById("firstName").textContent
         document.getElementById("familyTable").innerHTML = `${fName} Spouses info`
         document.getElementById("secondTableHeader").innerHTML = output
+        findTheRelatives()
     }
-    findTheRelatives()
+    
 }
 
 function buildTheFamilyGrid(peopleAdjustable){
@@ -211,6 +211,8 @@ document.getElementById("secondTable").innerHTML = output1
 function findTheRelatives (){
     
     let x = peopleAdjustable[0].currentSpouse
+    let y = peopleAdjustable[0].parents[0]
+    let z = peopleAdjustable[0].parents[1]
     let familyTree = people.filter(function(el){
         if ( x == el.id){
             return true;
@@ -219,6 +221,7 @@ function findTheRelatives (){
         }
     })
  buildTheFamilyGrid(familyTree)
+ console.log(y)
     
 }
 
