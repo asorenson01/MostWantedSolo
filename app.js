@@ -23,6 +23,7 @@ function searchByName(){
     // }
     peopleAdjustable = filteredPeople
     buildTheGrid(filteredPeople)
+    readyToFindRelatives()
 }
 
 // End of Starter Code //
@@ -60,7 +61,7 @@ document.getElementById("mainTable").innerHTML = output
 
 function getPeopleByGender(){
         let genderChoice = document.forms["genderForm"]["gender"].value
-    let peopleByGender = people.filter(function(el){
+    let peopleByGender = peopleAdjustable.filter(function(el){
         if ( genderChoice == el.gender){
             return true;
             
@@ -71,18 +72,17 @@ function getPeopleByGender(){
         
 
     })
-buildTheGrid(peopleByGender)
 
 peopleAdjustable = peopleByGender
-
-
+buildTheGrid(peopleAdjustable)
+readyToFindRelatives()
 }
 
 function getPeopleByEyeColor(){
     let peopleByEyeColor = []
     let eyeChoice = document.forms["eyeForm"]["colorEye"].value
     if (eyeChoice === "brown"||"black"||"hazel"||"blue"||"green" ){
-         peopleByEyeColor = peopleAdjustable.filter(function(el){
+                 peopleByEyeColor = peopleAdjustable.filter(function(el){
             if (eyeChoice == el.eyeColor){
                 return true;
             }else{
@@ -91,14 +91,13 @@ function getPeopleByEyeColor(){
             
         })
     }else {
-        invalidEntry("That is Not a Valid Eye Color Try again", "invalityEntry3")
+        invalidEntry("That is Not a Valid Eye Color Try again", "invalidEntry3")
     }
 
 peopleAdjustable = peopleByEyeColor
-buildTheGrid(peopleByEyeColor)
-  
-
-
+buildTheGrid(peopleAdjustable)
+readyToFindRelatives()
+ 
 }
 
 function getPeopleByHeightandWeight(){
@@ -139,31 +138,98 @@ function getPeopleByHeightandWeight(){
 
     })
     peopleAdjustable = peopleByHeightandWeight
-    buildTheGrid(peopleByHeightandWeight)
+    buildTheGrid(peopleAdjustable)
+    readyToFindRelatives()
 }
 
 function resetThePage(){
     peopleAdjustable = people
     buildTheGrid(peopleAdjustable)
+    readyToFindRelatives()
 }
 
 function invalidEntry(string,string1 ){
     let x = string
     let y = string1
-   
 document.getElementById(y).innerHTML = x;
 return x;
+}
 
+
+function readyToFindRelatives(){
+    if (peopleAdjustable.length > 1){
+        console.log("List is to big")
+    }else{
+        console.log("One Person left")
+        let output;
+        output = 
+        `<thead>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>D.O.B</th>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>EyeColor</th>
+        <th>Occupation</th>
+        <th>Parents</th>
+        <th>Current Spouse</th>
+      </thead>
+      <tbody id ="secondTable">
+      </tbody>`
+        
+        
+        document.getElementById("familyTable").innerHTML = "Family Data"
+        document.getElementById("secondTableHeader").innerHTML = output
+    }
+}
+
+function buildTheFamilyGrid(peopleAdjustable){
+    let output = '';
+    let test = peopleAdjustable.map(function(el){
+       return output +=
+        `<tr>
+        <td>${el.id}</td>
+        <td>${el.firstName}</td>
+        <td>${el.lastName}</td>
+        <td>${el.gender}</td>
+        <td>${el.dob}</td>
+        <td>${el.height}</td>
+        <td>${el.weight}</td>
+        <td>${el.eyeColor}</td>
+        <td>${el.occupation}</td>
+        <td>${el.parents}</td>
+        <td>${el.currentSpouse}</td>
+        </tr>`  
+
+})
+document.getElementById("secondTable").innerHTML = output
+}
+
+function findTheRelatives (){
+    
+    let x = peopleAdjustable[1].id
+    let familyTree = peopleAdjustable.filter(function(el){
+        if ( x = el.currentSpouse){
+            return true;
+        }else{
+            return false;
+        }
+    })
+    buildTheFamilyGrid(familyTree)
 }
 
 
 
 
 
-document
 
 
 
 
-buildTheGrid(people)
+
+
+
+buildTheGrid(peopleAdjustable)
 
