@@ -88,14 +88,30 @@ function getPeopleByEyeColor(){
         prompt(`${eyeChoice} Is not a Vaild Choice Trying Again`)
     }
 
-    //peopleAdjustable = peopleByEyeColor
-buildTheGrid(peopleByEyeColor)    
+peopleAdjustable = peopleByEyeColor
+buildTheGrid(peopleByEyeColor)
+  
 
 
 }
 
-function getPeopleByHeightandWeight{
-    
+function getPeopleByHeightandWeight(){
+    let peopleByHeightandWeight = []
+    let heightChoice = document.forms["heightAndWeight"]["height"].value
+    let weightChoice = document.forms["heightAndWeight"]["weight"].value
+    heightChoice = parseInt(heightChoice)
+    weightChoice = parseInt(weightChoice)
+    peopleByHeightandWeight = peopleAdjustable.filter(function(el){
+        if(el.height > 200 && heightChoice === 3){
+            return true;
+        }else{
+            return false;
+        }
+        
+       
+    })
+    peopleAdjustable = peopleByHeightandWeight
+    buildTheGrid(peopleByHeightandWeight)
 }
 
 
