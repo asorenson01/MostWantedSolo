@@ -8,7 +8,7 @@ function searchByName(){
     let lastNameInput = document.forms['nameForm']['lname'].value;
 
     // "people" is coming from the data.js file. We have access to it within this JavaScript file.
-    let filteredPeople = people.filter(function (person) {
+    let filteredPeople = peopleAdjustable.filter(function (person) {
         if(person.firstName === firstNameInput && person.lastName === lastNameInput){
             return true;
         }
@@ -16,11 +16,13 @@ function searchByName(){
     });
     
     // Rather than console logging, you need to append the filteredPeople to a table.
-    if(filteredPeople.length > 0){
-        console.log(filteredPeople);
-    }else{
-        console.log('Sorry, looks like there is no one with that name.');
-    }
+    // if(filteredPeople.length > 0){
+    //     console.log(filteredPeople);
+    // }else{
+    //     console.log('Sorry, looks like there is no one with that name.');
+    // }
+    peopleAdjustable = filteredPeople
+    buildTheGrid(filteredPeople)
 }
 
 // End of Starter Code //
@@ -138,6 +140,11 @@ function getPeopleByHeightandWeight(){
     })
     peopleAdjustable = peopleByHeightandWeight
     buildTheGrid(peopleByHeightandWeight)
+}
+
+function resetThePage(){
+    peopleAdjustable = people
+    buildTheGrid(peopleAdjustable)
 }
 
 

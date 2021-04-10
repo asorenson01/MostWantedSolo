@@ -1,3 +1,42 @@
+.userChoices{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.resetForm{
+    grid-row: 1;
+    grid-column:  2;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 35px;
+
+}
+
+#nameForm{
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.genColor{
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.heightWeight{
+    grid: 2;
+    grid-column: 2;
+    
+}
+
+/* #genderForm{
+    grid-row: 2;
+    grid-column: 2;
+}
+
+#eyeForm{
+    grid-row: 2;
+    grid-column: 2;
+} */
+
 table{
     table-layout: auto;
     border: 1px solid black;
