@@ -1,12 +1,18 @@
 table{
     table-layout: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: aqua;
+    width: 100%;
     
 }
 
 th {
     text-align: center;
+    border: 1px solid black;
 }
 
 td {
-    text-align: left;
+    text-align: center;
+    border: 1px solid black;
 }
