@@ -23,23 +23,24 @@
         <input type="button" onclick="getPeopleByGender()" vaule ="Submit"> 
       </select>
     </form>
+    <br>
     <form id ="eyeForm">
       <label for="eyeColor">Choose an Eye Color:</label>
       <input type="text" id="colorEye" name="colorEye">
       <input type="button" onclick="getPeopleByEyeColor()" value="Submit">
     </form>
-
+    <br>
     <form id ="heightAndWeight">
       <label for="height">Select a Height Range</label>
       <select name="height" id="height">
         <option value="1">58-63</option>
-        <option value="2">54-69</option>
+        <option value="2">64-69</option>
         <option value="3">Greater than 70</option>                
       </select>
       <label for="weight">Select a Weight Range</label>
       <select name="weight" id="weight">
         <option value="1">100-150</option>
-        <option value="2">151-200</option>
+        <option value="2">150-200</option>
         <option value="3">Greater than 200</option>
         <input type="button" onclick="getPeopleByHeightandWeight()" vaule ="Submit">         
       </select>
@@ -64,7 +65,7 @@
        <th>Parents</th>
        <th>Current Spouse</th>
      </thead>
-       <tbody id = "test">
+       <tbody id = "mainTable">
 
        </tbody>
      </th>

@@ -1,5 +1,7 @@
 'use strict';
 let peopleAdjustable = people
+//Start of Starter Code //
+
 function searchByName(){
     // Grabbing the values from our nameForm form and inputs.
     let firstNameInput = document.forms['nameForm']['fname'].value;
@@ -21,6 +23,8 @@ function searchByName(){
     }
 }
 
+// End of Starter Code //
+
 
 function buildTheGrid(peopleAdjustable){
     let output = '';
@@ -41,7 +45,7 @@ function buildTheGrid(peopleAdjustable){
         </tr>`  
 
 })
-document.getElementById("test").innerHTML = output
+document.getElementById("mainTable").innerHTML = output
 }
 
 // function buildTheNextMenu(){
@@ -102,13 +106,35 @@ function getPeopleByHeightandWeight(){
     heightChoice = parseInt(heightChoice)
     weightChoice = parseInt(weightChoice)
     peopleByHeightandWeight = peopleAdjustable.filter(function(el){
-        if(el.height > 200 && heightChoice === 3){
-            return true;
-        }else{
+        if(el.height >= 70 && heightChoice === 3){
+            if (el.weight >= 200 && weightChoice ===3){
+                return true;
+            } else if (el.weight < 200 && el.weight >= 150 && weightChoice === 2){
+                return true;
+            } else if ( el.weight < 150 && weightChoice === 1){
+                return true;
+            }
+            
+        } else if (el.height < 70 && el.height >= 64 && heightChoice === 2){
+            if (el.weight >= 200 && weightChoice ===3){
+                return true;
+            } else if (el.weight < 200 && el.weight >= 150 && weightChoice === 2){
+                return true;
+            } else if ( el.weight < 150 && weightChoice === 1){
+                return true;
+            }
+        } else if(el.height < 64 && heightChoice === 1){
+            if (el.weight >= 200 && weightChoice ===3){
+                return true;
+            } else if (el.weight < 200 && el.weight >= 150 && weightChoice === 2){
+                return true;
+            } else if ( el.weight < 150 && weightChoice === 1){
+                return true;
+            }
+         }else{
             return false;
         }
-        
-       
+
     })
     peopleAdjustable = peopleByHeightandWeight
     buildTheGrid(peopleByHeightandWeight)
