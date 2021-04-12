@@ -241,14 +241,11 @@ function findTheSpouse(){
     let x = peopleAdjustable[0].currentSpouse
     let spouse = people.filter(function(el){
         if ( x == el.id){
-            
             return true;
         }else{
             return false;
         }
     })
-
-
  listNewFamilyMemberType("Spouse")
  addToTheFamilyGrid(spouse)
  findTheParents()
@@ -346,19 +343,18 @@ addToTheFamilyGrid(inlaws);
 function listNewFamilyMemberType(type){
     let fName = document.getElementById("firstName").textContent
     let x = `
-    <tr>
-    <th id ="familyType" colspan ="11">${fName}'s ${type}</th>
-    </tr>`
     
+    <th id ="familyType" colspan ="11">${fName}'s ${type}</th>
+   `
     document.getElementById("secondTable").innerHTML += x
 }
 
 
 function addToTheFamilyGrid(spouse){
-    let output;
-    let test = spouse.map(function(el){
-   return output +=
-    `<tr>
+    let output = " " 
+    if (spouse.length > 0){
+    spouse.map(function(el){
+   return output +=`<tr>
     <td>${el.id}</td>
     <td>${el.firstName}</td>
     <td>${el.lastName}</td>
@@ -370,12 +366,17 @@ function addToTheFamilyGrid(spouse){
     <td>${el.occupation}</td>
     <td>${el.parents}</td>
     <td>${el.currentSpouse}</td>
-    </tr>`  
+    </tr>`
 
 })
 document.getElementById("secondTable").innerHTML += output
 
+}else{
+    //document.getElementById("secondTable").innerHTML += output 
 }
+        
+    }
+    
 
 
 
