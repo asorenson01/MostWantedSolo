@@ -178,10 +178,10 @@ function readyToFindRelatives(){
       <tbody id ="secondTable">
       </tbody>`
         
-    let fName = document.getElementById("firstName").textContent
-        document.getElementById("familyTable").innerHTML = `${fName} Spouses info`
+    
+        
         document.getElementById("secondTableHeader").innerHTML = output
-        findTheRelatives()
+        findTheDescendants()
     }
     
 }
@@ -208,19 +208,18 @@ function buildTheFamilyGrid(peopleAdjustable){
 document.getElementById("secondTable").innerHTML = output1
 }
 
-function findTheRelatives (){
-    
-    let x = peopleAdjustable[0].currentSpouse
-    let y = peopleAdjustable[0].parents[0]
-    let z = peopleAdjustable[0].parents[1]
-    let familyTree = people.filter(function(el){
-        if ( x == el.id){
+function findTheDescendants (){
+    let x = peopleAdjustable[0].id
+    let familyDescendants = people.filter(function(el){
+        if ( x == el.parents[0] || x == el.parents[1] ){
             return true;
         }else{
             return false;
         }
     })
- buildTheFamilyGrid(familyTree)
+ buildTheFamilyGrid(familyDescendants)
+ let fName = document.getElementById("firstName").textContent
+ document.getElementById("familyTable").innerHTML = `${fName}'s Descendants`
  console.log(y)
     
 }
