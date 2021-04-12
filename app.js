@@ -23,7 +23,7 @@ function searchByName(){
     // }
     peopleAdjustable = filteredPeople
     buildTheGrid(filteredPeople)
-    readyToFindRelatives()
+    readyToFindDescendants()
 }
 
 // End of Starter Code //
@@ -75,13 +75,13 @@ function getPeopleByGender(){
 
 peopleAdjustable = peopleByGender
 buildTheGrid(peopleAdjustable)
-readyToFindRelatives()
+readyToFindDescendants()
 }
 
 function getPeopleByEyeColor(){
     let peopleByEyeColor = []
     let eyeChoice = document.forms["eyeForm"]["colorEye"].value
-    if (eyeChoice === "brown"||"black"||"hazel"||"blue"||"green" ){
+    if (eyeChoice == "brown"||eyeChoice == "black"||eyeChoice == "hazel"||eyeChoice == "blue"||eyeChoice == "green" ){
                  peopleByEyeColor = peopleAdjustable.filter(function(el){
             if (eyeChoice == el.eyeColor){
                 return true;
@@ -96,7 +96,7 @@ function getPeopleByEyeColor(){
 
 peopleAdjustable = peopleByEyeColor
 buildTheGrid(peopleAdjustable)
-readyToFindRelatives()
+readyToFindDescendants()
  
 }
 
@@ -139,13 +139,13 @@ function getPeopleByHeightandWeight(){
     })
     peopleAdjustable = peopleByHeightandWeight
     buildTheGrid(peopleAdjustable)
-    readyToFindRelatives()
+    readyToFindDescendants()
 }
 
 function resetThePage(){
     peopleAdjustable = people
     buildTheGrid(peopleAdjustable)
-    readyToFindRelatives()
+    readyToFindDescendants()
 }
 
 function invalidEntry(string,string1 ){
@@ -156,7 +156,7 @@ return x;
 }
 
 
-function readyToFindRelatives(){
+function readyToFindDescendants(){
     if (peopleAdjustable.length > 1){
         
     }else{
@@ -186,7 +186,7 @@ function readyToFindRelatives(){
     
 }
 
-function buildTheFamilyGrid(peopleAdjustable){
+function buildTheDescendantGrid(peopleAdjustable){
     let output1 = '';
     let test = peopleAdjustable.map(function(el){
        return output1 +=
@@ -217,12 +217,74 @@ function findTheDescendants (){
             return false;
         }
     })
- buildTheFamilyGrid(familyDescendants)
+ buildTheDescendantGrid(familyDescendants)
  let fName = document.getElementById("firstName").textContent
- document.getElementById("familyTable").innerHTML = `${fName}'s Descendants`
- console.log(y)
+ document.getElementById("descendantTable").innerHTML = `${fName}'s Descendants`
+ if (familyDescendants.length == 0){
+     document.getElementById("noDescendants").innerHTML = `${fName} Does not have any children`
+ }
+listNewFamilyMemberType("spouse") 
+
+}
+
+
+
+
+
+
+
+
+function listNewFamilyMemberType(type){
+    let fName = document.getElementById("firstName").textContent
+    let x = `
+    
+    <h1 id =${type}> ${fName}'s ${type}</h1>`
+    
+    document.getElementById("secondTable").innerHTML += x
+}
+
+
+
+
+
+
+
+
+
+
+function readyToFindSpouse(){
+    if (peopleAdjustable.length > 1){
+        
+    }else{
+       let output;
+        output = 
+        `<thead>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>D.O.B</th>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>EyeColor</th>
+        <th>Occupation</th>
+        <th>Parents</th>
+        <th>Current Spouse</th>
+      </thead>
+      <tbody id ="secondTable">
+      </tbody>`
+        
+    
+        
+        document.getElementById("thirdTableHeader").innerHTML = output
+        // findTheDescendants()
+    }
     
 }
+
+
+
+ 
 
 
 
