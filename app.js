@@ -11,9 +11,18 @@ function searchByName(){
     let filteredPeople = peopleAdjustable.filter(function (person) {
         if(person.firstName === firstNameInput && person.lastName === lastNameInput){
             return true;
+        }else{
+             return false;
         }
-        return false;
+
+        
     });
+
+    if (filteredPeople.length > 0){
+
+    }else{
+        invalidEntry("That Person in not in the database", "invalidEntry3");
+    }
     
     // Rather than console logging, you need to append the filteredPeople to a table.
     // if(filteredPeople.length > 0){
@@ -91,7 +100,7 @@ function getPeopleByEyeColor(){
             
         })
     }else {
-        invalidEntry("That is Not a Valid Eye Color Try again", "invalidEntry3")
+        invalidEntry("That is Not a Valid Eye Color Try again", "invalidEntry1")
     }
 
 peopleAdjustable = peopleByEyeColor
@@ -187,9 +196,9 @@ function readyToFindDescendants(){
 }
 
 function buildTheDescendantGrid(peopleAdjustable){
-    let output1 = '';
+    let output = " "
     let test = peopleAdjustable.map(function(el){
-       return output1 +=
+       return output +=
         `<tr>
         <td>${el.id}</td>
         <td>${el.firstName}</td>
@@ -205,7 +214,7 @@ function buildTheDescendantGrid(peopleAdjustable){
         </tr>`  
 
 })
-document.getElementById("secondTable").innerHTML = output1
+document.getElementById("secondTable").innerHTML += output
 }
 
 function findTheDescendants (){
@@ -217,15 +226,115 @@ function findTheDescendants (){
             return false;
         }
     })
- buildTheDescendantGrid(familyDescendants)
- let fName = document.getElementById("firstName").textContent
- document.getElementById("descendantTable").innerHTML = `${fName}'s Descendants`
- if (familyDescendants.length == 0){
-     document.getElementById("noDescendants").innerHTML = `${fName} Does not have any children`
+listNewFamilyMemberType("Kids")
+buildTheDescendantGrid(familyDescendants)
+let fName = document.getElementById("firstName").textContent
+document.getElementById("descendantTable").innerHTML = `${fName}'s Family`
+if (familyDescendants.length == 0){
+     
  }
-listNewFamilyMemberType("spouse") 
+findTheSpouse();
 
 }
+
+function findTheSpouse(){
+    let x = peopleAdjustable[0].currentSpouse
+    let spouse = people.filter(function(el){
+        if ( x == el.id){
+            
+            return true;
+        }else{
+            return false;
+        }
+    })
+
+
+ listNewFamilyMemberType("Spouse")
+ addToTheFamilyGrid(spouse)
+ findTheParents()
+
+}
+
+function findTheParents(){
+    let x;
+    let y;
+    if ( peopleAdjustable[0].parents[0] === undefined){
+        x = 1
+    }else {
+        x = peopleAdjustable[0].parents[0]
+    }
+    if ( peopleAdjustable[0].parents[1] === undefined){
+        y = 1
+    }else{
+        y = peopleAdjustable[0].parents[1]
+
+    }
+    
+    let parents = people.filter(function(el){
+        if ( x == el.id || y == el.id){
+            return true;
+        }else{
+            return false;
+        }
+    })
+    listNewFamilyMemberType("Parents")
+    addToTheFamilyGrid(parents)
+    findTheSiblings()
+}
+
+function findTheSiblings(){
+    let x;
+    let y;
+    if ( peopleAdjustable[0].parents[0] === undefined){
+        x = 1
+    }else {
+        x = peopleAdjustable[0].parents[0]
+    }
+    if ( peopleAdjustable[0].parents[1] === undefined){
+        y = 1
+    }else{
+        y = peopleAdjustable[0].parents[1]
+
+    }
+   
+    let siblings = people.filter(function(el){
+        if ( x == el.parents[0] || x == el.parents[1] || y == el.parents[0] || y == el.parents[1] ){
+            return true;
+        }else{
+            return false;
+        }
+    })
+    listNewFamilyMemberType("Siblings")
+    addToTheFamilyGrid(siblings)
+    findTheInLaws()
+
+}
+
+function findTheInLaws(){
+    let x = peopleAdjustable[0].currentSpouse
+    let y;
+    let z;
+    let inlaws;
+    people.filter(function(el){
+        if ( x == el.id){
+            y = el.parents[0]
+            z = el.parents[1]
+            inlaws = people.filter(function(el){
+                if ( y == el.id || z == el.id){
+                    return true;
+                }else{
+                    return false;
+                }
+            
+            })
+
+        }
+    })
+listNewFamilyMemberType("InLaws");
+addToTheFamilyGrid(inlaws);
+
+}
+
 
 
 
@@ -237,50 +346,46 @@ listNewFamilyMemberType("spouse")
 function listNewFamilyMemberType(type){
     let fName = document.getElementById("firstName").textContent
     let x = `
-    
-    <h1 id =${type}> ${fName}'s ${type}</h1>`
+    <tr>
+    <th id ="familyType" colspan ="11">${fName}'s ${type}</th>
+    </tr>`
     
     document.getElementById("secondTable").innerHTML += x
 }
 
 
+function addToTheFamilyGrid(spouse){
+    let output;
+    let test = spouse.map(function(el){
+   return output +=
+    `<tr>
+    <td>${el.id}</td>
+    <td>${el.firstName}</td>
+    <td>${el.lastName}</td>
+    <td>${el.gender}</td>
+    <td>${el.dob}</td>
+    <td>${el.height}</td>
+    <td>${el.weight}</td>
+    <td>${el.eyeColor}</td>
+    <td>${el.occupation}</td>
+    <td>${el.parents}</td>
+    <td>${el.currentSpouse}</td>
+    </tr>`  
 
+})
+document.getElementById("secondTable").innerHTML += output
 
-
-
-
-
-
-
-function readyToFindSpouse(){
-    if (peopleAdjustable.length > 1){
-        
-    }else{
-       let output;
-        output = 
-        `<thead>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Gender</th>
-        <th>D.O.B</th>
-        <th>Height</th>
-        <th>Weight</th>
-        <th>EyeColor</th>
-        <th>Occupation</th>
-        <th>Parents</th>
-        <th>Current Spouse</th>
-      </thead>
-      <tbody id ="secondTable">
-      </tbody>`
-        
-    
-        
-        document.getElementById("thirdTableHeader").innerHTML = output
-        // findTheDescendants()
-    }
-    
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

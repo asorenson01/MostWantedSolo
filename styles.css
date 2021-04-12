@@ -27,9 +27,18 @@
     
 }
 
+#invalidEntry1{
+    grid-row: 3;
+    grid-column: 1;
+    color: red;
+    font-size: 35;
+    
+}
 #invalidEntry3{
     grid-row: 3;
     grid-column: 3;
+    color: red;
+    font-size: 35;
 }
 
 /* #genderForm{
@@ -65,9 +74,12 @@ h1{
     text-align: center;
 }
 
-#spouse{
-    background-color: white;
-    font-size: 50;
+#familyType{
+    
+    font-size:larger;
+    border: 2px solid  black
+   
+    
 
 }
 
