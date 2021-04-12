@@ -1,5 +1,5 @@
 'use strict';
-let peopleAdjustable = people
+let peopleAdjustable = people;
 //Start of Starter Code //
 
 function searchByName(){
@@ -12,7 +12,7 @@ function searchByName(){
         if(person.firstName === firstNameInput && person.lastName === lastNameInput){
             return true;
         }else{
-             return false;
+            return false;
         }
 
         
@@ -21,7 +21,7 @@ function searchByName(){
     if (filteredPeople.length > 0){
 
     }else{
-        invalidEntry("That Person in not in the database", "invalidEntry3");
+        invalidEntry("That Person in not in the database,", "invalidEntry3");
     }
     
     // Rather than console logging, you need to append the filteredPeople to a table.
@@ -30,9 +30,9 @@ function searchByName(){
     // }else{
     //     console.log('Sorry, looks like there is no one with that name.');
     // }
-    peopleAdjustable = filteredPeople
-    buildTheGrid(filteredPeople)
-    readyToFindDescendants()
+    peopleAdjustable = filteredPeople;
+    buildTheGrid(filteredPeople);
+    readyToFindDescendants();
 }
 
 // End of Starter Code //
@@ -41,7 +41,7 @@ function searchByName(){
 function buildTheGrid(peopleAdjustable){
     let output = '';
     let test = peopleAdjustable.map(function(el){
-       return output +=
+        return output +=
         `<tr>
         <td>${el.id}</td>
         <td id ="firstName">${el.firstName}</td>
@@ -56,7 +56,7 @@ function buildTheGrid(peopleAdjustable){
         <td>${el.currentSpouse}</td>
         </tr>`  
 
-})
+});
 document.getElementById("mainTable").innerHTML = output
 }
 
@@ -80,41 +80,41 @@ function getPeopleByGender(){
         } 
         
 
-    })
+    });
 
 peopleAdjustable = peopleByGender
-buildTheGrid(peopleAdjustable)
-readyToFindDescendants()
+buildTheGrid(peopleAdjustable);
+readyToFindDescendants();
 }
 
 function getPeopleByEyeColor(){
     let peopleByEyeColor = []
     let eyeChoice = document.forms["eyeForm"]["colorEye"].value
     if (eyeChoice == "brown"||eyeChoice == "black"||eyeChoice == "hazel"||eyeChoice == "blue"||eyeChoice == "green" ){
-                 peopleByEyeColor = peopleAdjustable.filter(function(el){
+                peopleByEyeColor = peopleAdjustable.filter(function(el){
             if (eyeChoice == el.eyeColor){
                 return true;
             }else{
                 return false;
             }
             
-        })
+        });
     }else {
-        invalidEntry("That is Not a Valid Eye Color Try again", "invalidEntry1")
+        invalidEntry("That is Not a Valid Eye Color,", "invalidEntry1");
     }
 
-peopleAdjustable = peopleByEyeColor
-buildTheGrid(peopleAdjustable)
-readyToFindDescendants()
- 
+peopleAdjustable = peopleByEyeColor;
+buildTheGrid(peopleAdjustable);
+readyToFindDescendants();
+
 }
 
 function getPeopleByHeightandWeight(){
     let peopleByHeightandWeight = []
     let heightChoice = document.forms["heightAndWeight"]["height"].value
     let weightChoice = document.forms["heightAndWeight"]["weight"].value
-    heightChoice = parseInt(heightChoice)
-    weightChoice = parseInt(weightChoice)
+    heightChoice = parseInt(heightChoice);
+    weightChoice = parseInt(weightChoice);
     peopleByHeightandWeight = peopleAdjustable.filter(function(el){
         if(el.height >= 70 && heightChoice === 3){
             if (el.weight >= 200 && weightChoice ===3){
@@ -141,26 +141,26 @@ function getPeopleByHeightandWeight(){
             } else if ( el.weight < 150 && weightChoice === 1){
                 return true;
             }
-         }else{
+            }else{
             return false;
         }
 
     })
     peopleAdjustable = peopleByHeightandWeight
-    buildTheGrid(peopleAdjustable)
-    readyToFindDescendants()
+    buildTheGrid(peopleAdjustable);
+    readyToFindDescendants();
 }
 
 function resetThePage(){
     peopleAdjustable = people
-    buildTheGrid(peopleAdjustable)
-    readyToFindDescendants()
+    buildTheGrid(peopleAdjustable);
+    readyToFindDescendants();
 }
 
 function invalidEntry(string,string1 ){
     let x = string
     let y = string1
-document.getElementById(y).innerHTML = x;
+document.getElementById(y).innerHTML = `${x} Rest the page and try again`
 return x;
 }
 
@@ -169,7 +169,7 @@ function readyToFindDescendants(){
     if (peopleAdjustable.length > 1){
         
     }else{
-       let output;
+        let output;
         output = 
         `<thead>
         <th>ID</th>
@@ -183,39 +183,39 @@ function readyToFindDescendants(){
         <th>Occupation</th>
         <th>Parents</th>
         <th>Current Spouse</th>
-      </thead>
-      <tbody id ="secondTable">
-      </tbody>`
+        </thead>
+        <tbody id ="secondTable">
+        </tbody>`
         
     
         
         document.getElementById("secondTableHeader").innerHTML = output
-        findTheDescendants()
+        findTheDescendants();
     }
     
 }
 
-function buildTheDescendantGrid(peopleAdjustable){
-    let output = " "
-    let test = peopleAdjustable.map(function(el){
-       return output +=
-        `<tr>
-        <td>${el.id}</td>
-        <td>${el.firstName}</td>
-        <td>${el.lastName}</td>
-        <td>${el.gender}</td>
-        <td>${el.dob}</td>
-        <td>${el.height}</td>
-        <td>${el.weight}</td>
-        <td>${el.eyeColor}</td>
-        <td>${el.occupation}</td>
-        <td>${el.parents}</td>
-        <td>${el.currentSpouse}</td>
-        </tr>`  
+// function buildTheDescendantGrid(peopleAdjustable){
+//     let output = " ";
+//     let test = peopleAdjustable.map(function(el){
+//        return output +=
+//         `<tr>
+//         <td>${el.id}</td>
+//         <td>${el.firstName}</td>
+//         <td>${el.lastName}</td>
+//         <td>${el.gender}</td>
+//         <td>${el.dob}</td>
+//         <td>${el.height}</td>
+//         <td>${el.weight}</td>
+//         <td>${el.eyeColor}</td>
+//         <td>${el.occupation}</td>
+//         <td>${el.parents}</td>
+//         <td>${el.currentSpouse}</td>
+//         </tr>`  
 
-})
-document.getElementById("secondTable").innerHTML += output
-}
+// });
+// document.getElementById("secondTable").innerHTML += output
+// }
 
 function findTheDescendants (){
     let x = peopleAdjustable[0].id
@@ -226,14 +226,14 @@ function findTheDescendants (){
             return false;
         }
     })
-listNewFamilyMemberType("Kids")
-buildTheDescendantGrid(familyDescendants)
-let fName = document.getElementById("firstName").textContent
-document.getElementById("descendantTable").innerHTML = `${fName}'s Family`
-if (familyDescendants.length == 0){
-     
- }
-findTheSpouse();
+    listNewFamilyMemberType("Kids");
+    addToTheFamilyGrid(familyDescendants, "Kids");
+    let fName = document.getElementById("firstName").textContent;
+    document.getElementById("descendantTable").innerHTML = `${fName}'s Family`;
+    if (familyDescendants.length == 0){
+
+    }
+    findTheSpouse();
 
 }
 
@@ -246,9 +246,9 @@ function findTheSpouse(){
             return false;
         }
     })
- listNewFamilyMemberType("Spouse")
- addToTheFamilyGrid(spouse)
- findTheParents()
+    listNewFamilyMemberType("Spouse");
+    addToTheFamilyGrid(spouse, "a Spouse");
+    findTheParents();
 
 }
 
@@ -264,7 +264,6 @@ function findTheParents(){
         y = 1
     }else{
         y = peopleAdjustable[0].parents[1]
-
     }
     
     let parents = people.filter(function(el){
@@ -273,10 +272,10 @@ function findTheParents(){
         }else{
             return false;
         }
-    })
-    listNewFamilyMemberType("Parents")
-    addToTheFamilyGrid(parents)
-    findTheSiblings()
+    });
+    listNewFamilyMemberType("Parents");
+    addToTheFamilyGrid(parents, "Parents");
+    findTheSiblings();
 }
 
 function findTheSiblings(){
@@ -293,7 +292,6 @@ function findTheSiblings(){
         y = peopleAdjustable[0].parents[1]
 
     }
-   
     let siblings = people.filter(function(el){
         if ( x == el.parents[0] || x == el.parents[1] || y == el.parents[0] || y == el.parents[1] ){
             return true;
@@ -301,9 +299,9 @@ function findTheSiblings(){
             return false;
         }
     })
-    listNewFamilyMemberType("Siblings")
-    addToTheFamilyGrid(siblings)
-    findTheInLaws()
+    listNewFamilyMemberType("Siblings");
+    addToTheFamilyGrid(siblings, "Siblings");
+    findTheInLaws();
 
 }
 
@@ -323,38 +321,27 @@ function findTheInLaws(){
                     return false;
                 }
             
-            })
+            });
 
         }
-    })
+    });
 listNewFamilyMemberType("InLaws");
-addToTheFamilyGrid(inlaws);
+addToTheFamilyGrid(inlaws, "in-laws");
 
 }
-
-
-
-
-
-
-
-
-
 function listNewFamilyMemberType(type){
     let fName = document.getElementById("firstName").textContent
-    let x = `
-    
-    <th id ="familyType" colspan ="11">${fName}'s ${type}</th>
-   `
-    document.getElementById("secondTable").innerHTML += x
+    let x = `   
+    <th id ="familyType" colspan ="11">${fName}'s ${type}</th>`
+    document.getElementById("secondTable").innerHTML += x;
 }
 
 
-function addToTheFamilyGrid(spouse){
-    let output = " " 
-    if (spouse.length > 0){
-    spouse.map(function(el){
-   return output +=`<tr>
+function addToTheFamilyGrid(array,string){
+    let output = " " ;
+    if (array.length > 0){
+    array.map(function(el){
+    return output +=`<tr>
     <td>${el.id}</td>
     <td>${el.firstName}</td>
     <td>${el.lastName}</td>
@@ -369,10 +356,13 @@ function addToTheFamilyGrid(spouse){
     </tr>`
 
 })
-document.getElementById("secondTable").innerHTML += output
+document.getElementById("secondTable").innerHTML += output;
 
 }else{
-    //document.getElementById("secondTable").innerHTML += output 
+    let fName = document.getElementById("firstName").textContent
+    let x = `   
+    <th id ="noFamilyType" colspan ="11">${fName}'s does not have ${string}</th>`
+    document.getElementById("secondTable").innerHTML += x;
 }
         
     }
@@ -390,20 +380,6 @@ document.getElementById("secondTable").innerHTML += output
 
 
 
- 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-buildTheGrid(peopleAdjustable)
+buildTheGrid(peopleAdjustable);
 
