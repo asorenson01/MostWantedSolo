@@ -372,6 +372,11 @@ document.getElementById("secondTable").innerHTML += output;
 
 
 
+let testing = peopleAdjustable[1]
+testing.pic = new Image
+testing.pic 
+
+console.log(testing)
 
 
 
@@ -380,6 +385,5 @@ document.getElementById("secondTable").innerHTML += output;
 
 
 
-
-buildTheGrid(peopleAdjustable);
+//buildTheGrid(peopleAdjustable);
 
