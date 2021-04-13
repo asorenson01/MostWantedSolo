@@ -2,9 +2,7 @@
 
 function buildTheGallery(array){
     let output = " "
-    let counter = 0
     array.map(function(el){
-        counter++;
         return output +=`
         <div id ="buildGallery">
             <img id="galleryImage1" src=${el.pic.src}>
@@ -18,7 +16,7 @@ function buildTheGallery(array){
             </div>        
             `
     })
-    console.log(document);
+    console.log("test");
     
     document.getElementById("galleryHome").innerHTML = output;
 
