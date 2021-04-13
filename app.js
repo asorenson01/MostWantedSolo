@@ -55,9 +55,12 @@ function buildTheGrid(peopleAdjustable){
         <td>${el.parents}</td>
         <td>${el.currentSpouse}</td>
         </tr>`  
-
-});
-document.getElementById("mainTable").innerHTML = output
+    });
+        document.getElementById("mainTable").innerHTML = output
+        if (peopleAdjustable.length === 1){
+                let pic = peopleAdjustable[0].pic.src
+                ocument.getElementById("testimage").src = pic
+                }
 }
 
 // function buildTheNextMenu(){
@@ -366,24 +369,40 @@ document.getElementById("secondTable").innerHTML += output;
 }
         
     }
-    
+
+function addThePhotos(){
+    let x =1;      
+    peopleAdjustable = people.map(function(el){
+        
+        el.pic = new Image;
+        el.pic.src = `images/image${x}.jpg`;
+        x++
+        return el;
+    })
+}  
 
 
 
 
 
-let testing = peopleAdjustable[1]
-testing.pic = new Image
-testing.pic 
-
-console.log(testing)
 
 
+
+
+addThePhotos();
 
 
 
 
 
 
-//buildTheGrid(peopleAdjustable);
+
+
+
+
+
+
+
+
+buildTheGrid(peopleAdjustable);
 
