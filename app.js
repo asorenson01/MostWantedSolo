@@ -59,7 +59,7 @@ function buildTheGrid(peopleAdjustable){
         document.getElementById("mainTable").innerHTML = output
         if (peopleAdjustable.length === 1){
                 let pic = peopleAdjustable[0].pic.src
-                ocument.getElementById("testimage").src = pic
+                document.getElementById("testimage").src = pic
                 }
 }
 
