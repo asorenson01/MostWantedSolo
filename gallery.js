@@ -1,7 +1,7 @@
 "use strict";
 
 function buildTheGallery(array){
-    let output = " "
+    let output = " ";
     array.map(function(el){
         return output +=`
         <div id ="buildGallery">

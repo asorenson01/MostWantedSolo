@@ -89,6 +89,9 @@ h1{
     background-color: white;
         
 }
+#noFamilyType{
+    background-color: red;
+}
 
 #testimage{
     margin-top: 15px;

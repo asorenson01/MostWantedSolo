@@ -60,8 +60,8 @@ function buildTheGrid(peopleAdjustable){
         if (peopleAdjustable.length === 1){
                 let pic = peopleAdjustable[0].pic.src
                 document.getElementById("testimage").src = pic
-                }
-}
+                };
+};
 
 
 
@@ -74,15 +74,15 @@ function getPeopleByGender(){
         }
         else{
         
-        } 
+        };
         
 
     });
 
-peopleAdjustable = peopleByGender
+peopleAdjustable = peopleByGender;
 buildTheGrid(peopleAdjustable);
 readyToFindDescendants();
-}
+};
 
 function getPeopleByEyeColor(){
     let peopleByEyeColor = []
@@ -107,9 +107,9 @@ readyToFindDescendants();
 }
 
 function getPeopleByHeightandWeight(){
-    let peopleByHeightandWeight = []
-    let heightChoice = document.forms["heightAndWeight"]["height"].value
-    let weightChoice = document.forms["heightAndWeight"]["weight"].value
+    let peopleByHeightandWeight = [];
+    let heightChoice = document.forms["heightAndWeight"]["height"].value;
+    let weightChoice = document.forms["heightAndWeight"]["weight"].value;
     heightChoice = parseInt(heightChoice);
     weightChoice = parseInt(weightChoice);
     peopleByHeightandWeight = peopleAdjustable.filter(function(el){
@@ -120,7 +120,7 @@ function getPeopleByHeightandWeight(){
                 return true;
             } else if ( el.weight < 150 && weightChoice === 1){
                 return true;
-            }
+            };
             
         } else if (el.height < 70 && el.height >= 64 && heightChoice === 2){
             if (el.weight >= 200 && weightChoice ===3){
@@ -137,29 +137,29 @@ function getPeopleByHeightandWeight(){
                 return true;
             } else if ( el.weight < 150 && weightChoice === 1){
                 return true;
-            }
+            };
             }else{
             return false;
-        }
+        };
 
     })
     peopleAdjustable = peopleByHeightandWeight
     buildTheGrid(peopleAdjustable);
     readyToFindDescendants();
-}
+};
 
 function resetThePage(){
     peopleAdjustable = people
     buildTheGrid(peopleAdjustable);
     readyToFindDescendants();
-}
+};
 
 function invalidEntry(string,string1 ){
-    let x = string
-    let y = string1
+    let x = string;
+    let y = string1;
 document.getElementById(y).innerHTML = `${x} Rest the page and try again`
 return x;
-}
+};
 
 
 function readyToFindDescendants(){
@@ -183,36 +183,11 @@ function readyToFindDescendants(){
         </thead>
         <tbody id ="secondTable">
         </tbody>`
-        
-    
-        
         document.getElementById("secondTableHeader").innerHTML = output
         findTheDescendants();
-    }
+    };
     
-}
-
-// function buildTheDescendantGrid(peopleAdjustable){
-//     let output = " ";
-//     let test = peopleAdjustable.map(function(el){
-//        return output +=
-//         `<tr>
-//         <td>${el.id}</td>
-//         <td>${el.firstName}</td>
-//         <td>${el.lastName}</td>
-//         <td>${el.gender}</td>
-//         <td>${el.dob}</td>
-//         <td>${el.height}</td>
-//         <td>${el.weight}</td>
-//         <td>${el.eyeColor}</td>
-//         <td>${el.occupation}</td>
-//         <td>${el.parents}</td>
-//         <td>${el.currentSpouse}</td>
-//         </tr>`  
-
-// });
-// document.getElementById("secondTable").innerHTML += output
-// }
+};
 
 function findTheDescendants (){
     let x = peopleAdjustable[0].id
@@ -221,18 +196,17 @@ function findTheDescendants (){
             return true;
         }else{
             return false;
-        }
-    })
+        };
+    });
     listNewFamilyMemberType("Kids");
     addToTheFamilyGrid(familyDescendants, "Kids");
     let fName = document.getElementById("firstName").textContent;
     document.getElementById("descendantTable").innerHTML = `${fName}'s Family`;
     if (familyDescendants.length == 0){
 
-    }
+    };
     findTheSpouse();
-
-}
+};
 
 function findTheSpouse(){
     let x = peopleAdjustable[0].currentSpouse
@@ -241,54 +215,53 @@ function findTheSpouse(){
             return true;
         }else{
             return false;
-        }
-    })
+        };
+    });
     listNewFamilyMemberType("Spouse");
     addToTheFamilyGrid(spouse, "a Spouse");
     findTheParents();
-
-}
+};
 
 function findTheParents(){
     let x;
     let y;
     if ( peopleAdjustable[0].parents[0] === undefined){
-        x = 1
+        x = 1;
     }else {
-        x = peopleAdjustable[0].parents[0]
+        x = peopleAdjustable[0].parents[0];
     }
     if ( peopleAdjustable[0].parents[1] === undefined){
-        y = 1
+        y = 1;
     }else{
-        y = peopleAdjustable[0].parents[1]
-    }
+        y = peopleAdjustable[0].parents[1];
+    };
     
     let parents = people.filter(function(el){
         if ( x == el.id || y == el.id){
             return true;
         }else{
             return false;
-        }
+        };
     });
     listNewFamilyMemberType("Parents");
     addToTheFamilyGrid(parents, "Parents");
     findTheSiblings();
-}
+};
 
 function findTheSiblings(){
     let x;
     let y;
     if ( peopleAdjustable[0].parents[0] === undefined){
-        x = 1
+        x = 1;
     }else {
-        x = peopleAdjustable[0].parents[0]
+        x = peopleAdjustable[0].parents[0];
     }
     if ( peopleAdjustable[0].parents[1] === undefined){
-        y = 1
+        y = 1;
     }else{
-        y = peopleAdjustable[0].parents[1]
+        y = peopleAdjustable[0].parents[1];
 
-    }
+    };
     let siblings = people.filter(function(el){
         if ( x == el.parents[0] || x == el.parents[1] || y == el.parents[0] || y == el.parents[1] ){
             return true;
@@ -299,11 +272,10 @@ function findTheSiblings(){
     listNewFamilyMemberType("Siblings");
     addToTheFamilyGrid(siblings, "Siblings");
     findTheInLaws();
-
-}
+};
 
 function findTheInLaws(){
-    let x = peopleAdjustable[0].currentSpouse
+    let x = peopleAdjustable[0].currentSpouse;
     let y;
     let z;
     let inlaws;
@@ -316,23 +288,23 @@ function findTheInLaws(){
                     return true;
                 }else{
                     return false;
-                }
+                };
             
             });
 
-        }
+        };
     });
 listNewFamilyMemberType("InLaws");
 addToTheFamilyGrid(inlaws, "in-laws");
+};
 
-}
+
 function listNewFamilyMemberType(type){
     let fName = document.getElementById("firstName").textContent
     let x = `   
     <th id ="familyType" colspan ="11">${fName}'s ${type}</th>`
     document.getElementById("secondTable").innerHTML += x;
-}
-
+};
 
 function addToTheFamilyGrid(array,string){
     let output = " " ;
@@ -351,79 +323,24 @@ function addToTheFamilyGrid(array,string){
     <td>${el.parents}</td>
     <td>${el.currentSpouse}</td>
     </tr>`
-
-})
+});
 document.getElementById("secondTable").innerHTML += output;
-
 }else{
     let fName = document.getElementById("firstName").textContent
     let x = `   
     <th id ="noFamilyType" colspan ="11">${fName}'s does not have ${string}</th>`
     document.getElementById("secondTable").innerHTML += x;
 }
-        
-    }
+    };
 
-function addThePhotos(){
+    function addThePhotos(){
     let x =1;      
     peopleAdjustable = people.map(function(el){
         el.pic = new Image;
         el.pic.src = `images/image${x}.jpg`;
-        x++
+        x++;
         return el;
     })
-}  
-
-// function buildTheGallery(array){
-//     let output = " "
-//     let counter = 0
-//     array.map(function(el){
-//         counter++;
-//         return output +=`
-//         <div id ="buildGallery${counter}">
-//             <img id="galleryImage1" src=${el.pic.src}>
-//             <ul id ="galleryList1">
-//                 <li id = "li1">${el.firstName}</li>
-//                 <li id = "li2">${el.lastName}</li>
-//                 <li id = "li3">${el.occupation}</li>
-//             </ul>
-            
-          
-//             </div>        
-//             `
-//     })
-//     console.log(document);
-    
-//     document.getElementById("buildGallery").innerHTML += output;
-
-// }
-
-
-
-
-
-
-
-
-
+} ; 
 addThePhotos();
-
-
-
-// {/* <img id="galleryImage2" src=${el.pic.src}>
-// <ul id ="galleryList2">
-//     <li id = "li1">${el.firstName}</li>
-//     <li id = "li2">${el.lastName}</li>
-//     <li id = "li3">${el.occupation}</li>
-// </ul>
-// <img id="galleryImage3" src=${el.pic.src}>
-// <ul id ="galleryList3">
-//     <li id = "li1">${el.firstName}</li>
-//     <li id = "li2">${el.lastName}</li>
-//     <li id = "li3">${el.occupation}</li>
-// </ul> */}
-
-
-
 buildTheGrid(peopleAdjustable);
-// buildTheGallery(peopleAdjustable);
