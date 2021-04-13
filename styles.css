@@ -7,8 +7,15 @@
     grid-column:  2;
     text-align: center;
     margin-bottom: 10px;
-    font-size: 35px;
+    font-size: 35px;  
 
+}
+
+.vGallery{
+    grid-row: 1;
+    grid-column: 3;
+    text-align: right;
+    margin-right: 20px;
 }
 
 #nameForm{
@@ -88,5 +95,65 @@ h1{
     margin-left: 50%;
     width: 5%;
     height: auto;
+}
+
+/* Gallery Page */
+
+#galleryHome{
+    display: grid;
+    grid-template-columns: max-content;
+    
+}
+/* #buildGallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    border: 2px solid black;
+} */
+
+#galleryImage1{
+    grid-row: 1;
+    grid-column: 1;
+    margin: auto;
+    height: 110px;
+    width: auto;
+    
+}
+
+#galleryList1{
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 25px;
+    
+
+}
+#galleryImage2{
+    grid-row: 1;
+    grid-column: 3;
+    margin: auto;
+    height: 110px;
+    width: auto;
+    
+}
+
+#galleryList2{
+    grid-row: 1;
+    grid-column: 4;
+    font-size: 25px;
+
+}
+#galleryImage3{
+    grid-row: 1;
+    grid-column: 5;
+    margin: auto;
+    height: 110px;
+    width: auto;
+    
+}
+
+#galleryList3{
+    grid-row: 1;
+    grid-column: 6;
+    font-size: 25px;
+
 }
 

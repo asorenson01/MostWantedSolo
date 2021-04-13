@@ -63,12 +63,6 @@ function buildTheGrid(peopleAdjustable){
                 }
 }
 
-// function buildTheNextMenu(){
-//     let eyeColor = `<label for="eyeColor">Choose an Eye Color:</label>
-//                    <input type="text:" id="eyeColor" name="eyeColor" value="">`
-    
-//                    document.getElementById("eyeColorForm").innerHTML=eyeColor
-// }
 
 
 function getPeopleByGender(){
@@ -373,13 +367,36 @@ document.getElementById("secondTable").innerHTML += output;
 function addThePhotos(){
     let x =1;      
     peopleAdjustable = people.map(function(el){
-        
         el.pic = new Image;
         el.pic.src = `images/image${x}.jpg`;
         x++
         return el;
     })
 }  
+
+// function buildTheGallery(array){
+//     let output = " "
+//     let counter = 0
+//     array.map(function(el){
+//         counter++;
+//         return output +=`
+//         <div id ="buildGallery${counter}">
+//             <img id="galleryImage1" src=${el.pic.src}>
+//             <ul id ="galleryList1">
+//                 <li id = "li1">${el.firstName}</li>
+//                 <li id = "li2">${el.lastName}</li>
+//                 <li id = "li3">${el.occupation}</li>
+//             </ul>
+            
+          
+//             </div>        
+//             `
+//     })
+//     console.log(document);
+    
+//     document.getElementById("buildGallery").innerHTML += output;
+
+// }
 
 
 
@@ -393,16 +410,20 @@ addThePhotos();
 
 
 
-
-
-
-
-
-
-
-
+// {/* <img id="galleryImage2" src=${el.pic.src}>
+// <ul id ="galleryList2">
+//     <li id = "li1">${el.firstName}</li>
+//     <li id = "li2">${el.lastName}</li>
+//     <li id = "li3">${el.occupation}</li>
+// </ul>
+// <img id="galleryImage3" src=${el.pic.src}>
+// <ul id ="galleryList3">
+//     <li id = "li1">${el.firstName}</li>
+//     <li id = "li2">${el.lastName}</li>
+//     <li id = "li3">${el.occupation}</li>
+// </ul> */}
 
 
 
 buildTheGrid(peopleAdjustable);
-
+// buildTheGallery(peopleAdjustable);
